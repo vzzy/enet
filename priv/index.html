@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Websocket client</title>
+    <script src="static/jquery.min.js"></script>
+    <script src="static/ws.js"></script>
+    <script type="text/javascript">
+      
+      $(document).ready(init);
+      
+      function init() {
+          //$('#server').val("ws://" + window.location.host + "/websocket");
+          $('#server').val("ws://127.0.0.1:80/ws");
+          if(!("WebSocket" in window)){  
+              $('#status').append('<p><span style="color: red;">websockets are not supported </span></p>');
+              $("#navigation").hide();  
+          } else {
+              $('#status').append('<p><span style="color: green;">websockets are supported </span></p>');
+              connect();
+          };
+              $("#connected").hide(); 	
+              $("#content").hide(); 	
+      };
+      
+      function connect(){
+          wsHost = $("#server").val();
+          ws.connect(wsHost,onOpen,onClose,onMessage,onError);
+          showScreen('<b>Connecting to: ' +  wsHost + '</b>'); 
+      };  
+      
+      function sendTxt() {
+    	  txt = $("#send_txt").val();
+    	  var flag = ws.send(txt);
+          if(flag){
+              showScreen('SEND: ' + txt); 
+          } else {
+               showScreen('websocket is not connected'); 
+          };
+      };
+
+      var onOpen = function(evt) { 
+          showScreen('<span style="color: green;">CONNECTED </span>'); 
+          $("#connected").fadeIn('slow');
+          $("#content").fadeIn('slow');
+      };  
+
+      var onClose = function(evt) { 
+          showScreen('<span style="color: red;">DISCONNECTED </span>');
+      };  
+
+      var onMessage = function(evt) { 
+          showScreen('<span style="color: blue;">RESPONSE: ' + evt.data+ '</span>'); 
+      };  
+
+      var onError = function(evt) {
+          showScreen('<span style="color: red;">ERROR: ' + evt.data+ '</span>');
+      };
+
+      function showScreen(txt) { 
+          $('#output').prepend('<p>' + txt + '</p>');
+      };
+
+      function clearScreen(){ 
+          $('#output').html("");
+      };
+    </script>
+  </head>
+
+  <body>
+    <div id="header">
+      <h1>Websocket client</h1>
+      <div id="status"></div>
+    </div>
+
+
+    <div id="navigation">
+
+      <p id="connecting">
+	<input type='text' id="server" value=""></input>
+	<button type="button" onclick="connect()">connection</button>
+      </p>
+      <div id="connected">				
+	<p>
+	  <input type='text' id="send_txt" value=></input>
+	  <button type="button" onclick="sendTxt();">send</button>
+	</p>
+      </div>
+
+      <div id="content">						
+	<button id="clear" onclick="clearScreen()" >Clear text</button>
+	<div id="output"></div>
+      </div>
+
+    </div>
+  </body>
+</html> 
