@@ -8,8 +8,7 @@
               {modules,[enet,enet_api,enet_api_handler,enet_app,enet_c2s,
                         enet_sup,enet_tcp_accept,enet_tcp_client,
                         enet_tcp_interface,enet_tcp_listener,enet_tcp_packet,
-                        enet_tcp_receive,enet_tcp_shaper,enet_util,enet_ws,
-                        im_tcp]},
+                        enet_tcp_receive,enet_tcp_shaper,enet_util,enet_ws]},
               {maintainers,[]},
               {licenses,["Apache 2.0"]},
               {links,[]}]}.
