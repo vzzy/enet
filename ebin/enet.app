@@ -2,7 +2,7 @@
              [{description,"An Erlang net library"},
               {vsn,"0.1.0"},
               {registered,[]},
-              {applications,[kernel,stdlib,eutil,jsx,cowboy]},
+              {applications,[kernel,stdlib,jsx,cowboy]},
               {mod,{enet_app,[]}},
               {env,[]},
               {modules,[enet,enet_api,enet_api_handler,enet_app,enet_c2s,
