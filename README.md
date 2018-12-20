@@ -19,4 +19,4 @@ Build
 
 	需写自己的ws_handler、hanlder模块。
 
-	handler(Args,Method,Bindings,Maps,Req)
+	handler(Args,Method,Heads,Bindings,Bodys)
