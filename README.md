@@ -10,6 +10,8 @@ Reuqire
 	otp17.5+
 	GNU Make
 	rebar3
+	
+	priv/web 为站点根目录(HTML等静态文件)
 
 Build
 -----
@@ -23,4 +25,4 @@ Build
 	handler(Args,<<"GET">>,Heads,Bindings,Bodys)
 	handler(Args,<<"POST">>,Heads,Bindings,Bodys)
 	
-	log(debug | warn | error,Maps)
+	log(debug | info | warning | error,Maps)
