@@ -11,7 +11,16 @@ Reuqire
 	GNU Make
 	rebar3
 	
-	priv/web 为站点根目录(HTML等静态文件)
+	{enet,[
+	    {interface,enet_tcp_interface},   %% 接口模块 
+	    {ports,[8080]},               %% TCP端口列表
+	    
+	    {http_port,80},
+	    {http_num_acceptors, 1000},
+	    {web_root,"priv/web"}
+	 ]}
+	 
+	 web_root 用绝对路径比较合适，相对路径容易搞混
 
 Build
 -----
