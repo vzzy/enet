@@ -20,4 +20,7 @@ Build
 
 	需写自己的ws_handler、hanlder模块。
 
-	handler(Args,Method,Heads,Bindings,Bodys)
+	handler(Args,<<"GET">>,Heads,Bindings,Bodys)
+	handler(Args,<<"POST">>,Heads,Bindings,Bodys)
+	
+	log(debug | warn | error,Maps)
